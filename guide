@@ -1,0 +1,35 @@
+Initialiser le projet Node.js :
+npm init -y
+
+Installe les dépendances requises pour le projet :
+npm install express mongoose ejs body-parser express-session connect-mongo bcryptjs dotenv
+
+structure: 
+doctor-app/
+├── config/
+│   └── db.js
+├── controllers/
+│   └── authController.js
+├── models/
+│   └── User.js
+├── routes/
+│   └── authRoutes.js
+├── views/
+│   ├── login.ejs
+│   ├── register.ejs
+│   └── layout.ejs
+├── .env
+├── app.js
+└── package.json
+
+Lancer le serveur :
+node app.js
+
+Gérer lupload de fichiers
+npm install multer
+
+ <h2class="text-center animated-text">
+ Mon application est :</h2> 
+
+ http://localhost:3000/login
+  http://localhost:3000/register

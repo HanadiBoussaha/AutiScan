@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #007bff; /* Couleur de fond bleue */
+            background-image: url('/uploads/medecin-min.jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            transform: translateY(-20px);
+            animation: slideIn 0.5s forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+            background-color: #28a745; /* Couleur verte pour le toast */
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            display: none; /* Masqué par défaut */
+        }
+
+        .form-control {
+            margin-bottom: 20px; /* Ajout d'espace entre les champs */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="text-center">Login</h2>
+        <form id="loginForm" action="/login" method="POST">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="/">Back to Home</a>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        Connexion réussie!
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Affiche le toast en cas de connexion réussie
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('success') === 'true') {
+            $('#toast').show().fadeIn(200).delay(3000).fadeOut(200); // Animation du toast
+        }
+
+        // Gérer l'envoi du formulaire
+        $('#loginForm').on('submit', function(e) {
+            e.preventDefault();
+            const formData = $(this).serialize();
+
+            $.post($(this).attr('action'), formData)
+                .done(function() {
+                    $('#toast').show().fadeIn(200).delay(3000).fadeOut(200); // Affiche le toast ici
+                    setTimeout(() => {
+                        window.location.href = 'dashboard/?success=true'; // Redirige après le toast
+                    }, 3000); // Délai avant redirection
+                })
+                .fail(function() {
+                    alert('Erreur de connexion, veuillez vérifier vos identifiants.');
+                });
+        });
+    </script>
+</body>
+</html>
