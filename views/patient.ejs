@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title><%= isEdit ? 'Modifier' : 'Ajouter' %> un Patient</title>
+</head>
+<body>
+    <h1><%= isEdit ? 'Modifier' : 'Ajouter' %> un Patient</h1>
+    <form action="<%= isEdit ? '/patients/' + patient._id + '?_method=PUT' : '/patients' %>" method="POST">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" value="<%= isEdit ? patient.nom : '' %>" required><br>
+
+        <label for="prénom">Prénom:</label>
+        <input type="text" id="prénom" name="prénom" value="<%= isEdit ? patient.prénom : '' %>" required><br>
+
+        <label for="dateDeNaissance">Date de Naissance:</label>
+        <input type="date" id="dateDeNaissance" name="dateDeNaissance" value="<%= isEdit ? patient.dateDeNaissance.toISOString().split('T')[0] : '' %>" required><br>
+
+        <label for="sexe">Sexe:</label>
+        <select id="sexe" name="sexe" required>
+            <option value="Masculin" <%= isEdit && patient.sexe === 'Masculin' ? 'selected' : '' %>>Masculin</option>
+            <option value="Féminin" <%= isEdit && patient.sexe === 'Féminin' ? 'selected' : '' %>>Féminin</option>
+        </select><br>
+
+        <label for="adresseRue">Rue:</label>
+        <input type="text" id="adresseRue" name="adresse[rue]" value="<%= isEdit ? patient.adresse.rue : '' %>"><br>
+
+        <label for="adresseVille">Ville:</label>
+        <input type="text" id="adresseVille" name="adresse[ville]" value="<%= isEdit ? patient.adresse.ville : '' %>"><br>
+
+        <label for="adresseCodePostal">Code Postal:</label>
+        <input type="text" id="adresseCodePostal" name="adresse[codePostal]" value="<%= isEdit ? patient.adresse.codePostal : '' %>"><br>
+
+        <label for="numéroDeTéléphone">Numéro de Téléphone:</label>
+        <input type="tel" id="numéroDeTéléphone" name="numéroDeTéléphone" value="<%= isEdit ? patient.numéroDeTéléphone : '' %>"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<%= isEdit ? patient.email : '' %>"><br>
+
+        <label for="diagnostic">Diagnostic:</label>
+        <input type="text" id="diagnostic" name="diagnostic" value="<%= isEdit ? patient.diagnostic : '' %>"><br>
+
+        <label for="dateDiagnostic">Date du Diagnostic:</label>
+        <input type="date" id="dateDiagnostic" name="dateDiagnostic" value="<%= isEdit ? patient.dateDiagnostic.toISOString().split('T')[0] : '' %>"><br>
+
+        <label for="scolarité">Scolarité:</label>
+        <input type="text" id="scolarité" name="scolarité" value="<%= isEdit ? patient.scolarité : '' %>"><br>
+
+        <label for="historiqueMédical">Historique Médical:</label>
+        <textarea id="historiqueMédical" name="historiqueMédical"><%= isEdit ? patient.historiqueMédical : '' %></textarea><br>
+
+        <button type="submit"><%= isEdit ? 'Modifier' : 'Ajouter' %> Patient</button>
+    </form>
+</body>
+</html>

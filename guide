@@ -22,6 +22,8 @@ doctor-app/
 ├── app.js
 └── package.json
 
+ Installer method-override:
+npm install method-override
 Lancer le serveur :
 node app.js
 

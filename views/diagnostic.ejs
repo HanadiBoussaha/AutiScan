@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Questions</title>
+</head>
+
+<body>
+    <h1>Répondez aux questions A1 à A10</h1>
+    <form action="/submit-answers" method="POST">
+        <label for="A1">A1 : Est-ce que votre enfant vous regarde lorsque vous l'appelez?</label>
+        <input type="radio" name="A1" value="1" required> Oui
+        <input type="radio" name="A1" value="0" required> Non
+        <br>
+
+        <label for="A2">A2 : A quel point est-ce facile d'avoir un contact visuel avec votre enfant?</label>
+        <input type="radio" name="A2" value="1" required> Oui
+        <input type="radio" name="A2" value="0" required> Non
+        <br>
+
+        <label for="A3">A3 : Est-ce que votre enfant pointe pour vous indiquer ce qu'il veut avoir? (Comme un jouet hors de sa portée)</label>
+        <input type="radio" name="A3" value="1" required> Oui
+        <input type="radio" name="A3" value="0" required> Non
+        <br>
+
+        <label for="A4">A4 : Est-ce que votre enfant pointe pour attirer votre attention sur quelque chose qui l'intéresse? (Comme pointer vers une automobile qui l'intéresse)</label>
+        <input type="radio" name="A4" value="1" required> Oui
+        <input type="radio" name="A4" value="0" required> Non
+        <br>
+
+        <label for="A5">A5 : Est-ce que votre enfant joue à faire semblant? (Comme jouer avec des poupées, parler dans un téléphone jouet)</label>
+        <input type="radio" name="A5" value="1" required> Oui
+        <input type="radio" name="A5" value="0" required> Non
+        <br>
+
+        <label for="A6">A6 : Si vous ou quelqu'un de votre famille est triste ou bouleversé, est-ce que votre enfant essaie de le réconforter? (Par exemple en lui faisant une caresse ou en le prenant dans ses bras)</label>
+        <input type="radio" name="A6" value="1" required> Oui
+        <input type="radio" name="A6" value="0" required> Non
+        <br>
+
+        <label for="A7">A7 : Est-ce que votre enfant essaie de le réconforter? (Par exemple en lui faisant une caresse ou en le prenant dans ses bras)</label>
+        <input type="radio" name="A7" value="1" required> Oui
+        <input type="radio" name="A7" value="0" required> Non
+        <br>
+
+        <label for="A8">A8 : Est-ce que les premiers mots de votre enfant étaient?</label>
+        <input type="radio" name="A8" value="1" required> Oui
+        <input type="radio" name="A8" value="0" required> Non
+        <br>
+
+        <label for="A9">A9 : Est-ce que votre enfant utilise spontanément des gestes simples de communication, comme saluer de la main?</label>
+        <input type="radio" name="A9" value="1" required> Oui
+        <input type="radio" name="A9" value="0" required> Non
+        <br>
+
+        <label for="A10_Autism_Spectrum_Quotient">A10 : Est-ce que votre enfant regarde fixement dans le vide, sans but apparent?</label>
+        <input type="radio" name="A10_Autism_Spectrum_Quotient" value="1" required> Oui
+        <input type="radio" name="A10_Autism_Spectrum_Quotient" value="0" required> Non
+        <br>
+        <label for="Age_Years">Âge de l'enfant (en années) :</label>
+        <input type="number" name="Age_Years" required>
+        <br>
+
+        <label for="Sexe">Quel est le sexe de votre enfant ?</label>
+        <select name="Sex" required>
+            <option value="0">F</option>
+            <option value="1">M</option>
+        </select>
+        <br>
+
+        <label for="Jaundice">Avez-vous eu de la jaunisse ?</label>
+        <input type="radio" name="Jaundice" value="1" required> Oui
+        <input type="radio" name="Jaundice" value="0" required> Non
+        <br>
+
+        <label for="Family_mem_with_ASD">Y a-t-il des membres de la famille ayant un trouble du spectre autistique (ASD) ?</label>
+        <input type="radio" name="Family_mem_with_ASD" value="1" required> Oui
+        <input type="radio" name="Family_mem_with_ASD" value="0" required> Non
+        <br>
+
+        <label for="Who_completed_the_test">Qui a complété le test ?</label>
+        <select name="Who_completed_the_test" required>
+            <option value="0">Membre de la famille</option>
+            <option value="1">Professionnel de santé</option>
+            <option value="2">Autres</option>
+            <option value="3">Parent</option>
+            <option value="4">Relative</option>
+            <option value="5">École et ONG</option>
+            <option value="6">Soit-même</option>
+        </select>
+        <br>
+
+        <label for="ASD_traits">Avez-vous des traits d'ASD ?</label>
+        <input type="radio" name="ASD_traits" value="1" required> Oui
+        <input type="radio" name="ASD_traits" value="0" required> Non
+        <br>
+
+        <label for="Ethnicity">Ethnicité :</label>
+        <select name="Ethnicity" required>
+            <option value="0">Asiatique</option>
+            <option value="1">Noir</option>
+            <option value="2">Hispanique</option>
+            <option value="3">Latino</option>
+            <option value="4">Moyen-Oriental</option>
+            <option value="5">Mixte</option>
+            <option value="6">Indien</option>
+            <option value="7">Autres</option>
+            <option value="8">Pacifique</option>
+            <option value="9">Asiatique du Sud</option>
+            <option value="10">Turc</option>
+            <option value="11">white european</option>
+            <option value="12">white-european</option>
+            <option value="13">others</option>
+        </select>
+        <br>
+
+        <button type="submit">Envoyer</button>
+    </form>
+    <% if (typeof predictionResult !== 'undefined') { %>
+        <h2>Résultat de la Prédiction :</h2>
+        <p>
+            <%= predictionResult %>
+        </p>
+        <% } %>
+</body>
+
+</html>
